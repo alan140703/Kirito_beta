@@ -6,7 +6,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey,
       body: Center(
         child: loginBody(),
       ),
@@ -23,22 +23,24 @@ class LoginPage extends StatelessWidget {
   loginHeader() => Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          FlutterLogo(
-            colors: Colors.green,
-            size: 80.0,
+          Image.asset(
+            "assets/images/LOGO-04.png",
+           
+            fit: BoxFit.scaleDown,
+            
           ),
           SizedBox(
             height: 30.0,
           ),
           Text(
-            "Welcome to ${UIData.appName}",
+            "Bienvenido a ${UIData.appName}",
             style: TextStyle(fontWeight: FontWeight.w700, color: Colors.green),
           ),
           SizedBox(
             height: 5.0,
           ),
           Text(
-            "Sign in to continue",
+            "Ingresa para continuar",
             style: TextStyle(color: Colors.grey),
           ),
         ],
@@ -54,8 +56,8 @@ class LoginPage extends StatelessWidget {
               child: TextField(
                 maxLines: 1,
                 decoration: InputDecoration(
-                  hintText: "Enter your username",
-                  labelText: "Username",
+                  hintText: "Ingresa tu nombre de Usuario",
+                  labelText: "Nombre de Usuario",
                 ),
               ),
             ),
@@ -65,8 +67,8 @@ class LoginPage extends StatelessWidget {
                 maxLines: 1,
                 obscureText: true,
                 decoration: InputDecoration(
-                  hintText: "Enter your password",
-                  labelText: "Password",
+                  hintText: "Ingresa tu contraseña",
+                  labelText: "Contraseña",
                 ),
               ),
             ),
@@ -80,7 +82,7 @@ class LoginPage extends StatelessWidget {
                 padding: EdgeInsets.all(12.0),
                 shape: StadiumBorder(),
                 child: Text(
-                  "SIGN IN",
+                  "Ingresar",
                   style: TextStyle(color: Colors.white),
                 ),
                 color: Colors.green,
@@ -91,8 +93,8 @@ class LoginPage extends StatelessWidget {
               height: 5.0,
             ),
             Text(
-              "SIGN UP FOR AN ACCOUNT",
-              style: TextStyle(color: Colors.grey),
+              "CREA UNA CUENTA",
+              style: TextStyle(color: Colors.white),
             ),
           ],
         ),
