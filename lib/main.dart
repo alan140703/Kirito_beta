@@ -1,4 +1,5 @@
 import 'package:beta_balmer/pages/login_page.dart';
+import 'package:beta_balmer/pages/homePage.dart';
 import 'package:beta_balmer/pages/notfound_page.dart';
 import 'package:beta_balmer/utils/uidata.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
       //routes
       routes: <String, WidgetBuilder>{
         UIData.loginRoute: (BuildContext context) => LoginPage(),
+        UIData.homeRoute: (BuildContext context) => HomePage(),
       
       },
       onUnknownRoute: (RouteSettings rs) => new MaterialPageRoute(
@@ -46,5 +48,3 @@ class MyApp extends StatelessWidget {
 
   }
 }
-
-

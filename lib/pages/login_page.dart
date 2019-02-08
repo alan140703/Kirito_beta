@@ -6,17 +6,17 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.white,
       body: Center(
-        child: loginBody(),
+        child: loginBody(context),
       ),
     );
   }
 
-  loginBody() => SingleChildScrollView(
+  loginBody(context) => SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[loginHeader(), loginFields()],
+          children: <Widget>[loginHeader(), loginFields(context)],
         ),
       );
 
@@ -24,13 +24,13 @@ class LoginPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Image.asset(
-            "assets/images/LOGO-04.png",
-           
-            fit: BoxFit.scaleDown,
-            
+            "assets/images/LOGO-06.png",
+            height: 200,
+            width: 200,
+            //fit: BoxFit.cover,
           ),
           SizedBox(
-            height: 30.0,
+            height: 20.0,
           ),
           Text(
             "Bienvenido a ${UIData.appName}",
@@ -46,14 +46,14 @@ class LoginPage extends StatelessWidget {
         ],
       );
 
-  loginFields() => Container(
+  loginFields(context) => Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Container(
               padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 30.0),
-              child: TextField(
+              child: TextFormField(
                 maxLines: 1,
                 decoration: InputDecoration(
                   hintText: "Ingresa tu nombre de Usuario",
@@ -63,7 +63,7 @@ class LoginPage extends StatelessWidget {
             ),
             Container(
               padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 30.0),
-              child: TextField(
+              child: TextFormField(
                 maxLines: 1,
                 obscureText: true,
                 decoration: InputDecoration(
@@ -86,7 +86,9 @@ class LoginPage extends StatelessWidget {
                   style: TextStyle(color: Colors.white),
                 ),
                 color: Colors.green,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, "/homePage");
+                },//API Y ROUTE AL HOME PAGE
               ),
             ),
             SizedBox(
@@ -94,7 +96,7 @@ class LoginPage extends StatelessWidget {
             ),
             Text(
               "CREA UNA CUENTA",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.grey),
             ),
           ],
         ),
