@@ -1,172 +1,116 @@
 import 'package:flutter/material.dart';
-import 'package:beta_balmer/logic/post_bloc.dart';
-import 'package:beta_balmer/model/post.dart';
-import 'package:beta_balmer/pages/widgets/common_divider.dart';
-import 'package:beta_balmer/pages//widgets/common_drawer.dart';
-import 'package:beta_balmer/pages//widgets/label_icon.dart';
-import 'package:beta_balmer/utils/uidata.dart';
+import 'package:beta_balmer/pages/widgets/common_drawer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:beta_balmer/pages/imageCardList.dart';
 
-class HomePage extends StatelessWidget {
-  //column1
-  Widget profileColumn(BuildContext context, Post post) => Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          CircleAvatar(
-            backgroundImage: NetworkImage(post.personImage),
-          ),
-          Expanded(
-              child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  post.personName,
-                  style: Theme.of(context)
-                      .textTheme
-                      .body1
-                      .apply(fontWeightDelta: 700),
-                ),
-                SizedBox(
-                  height: 5.0,
-                ),
-                Text(
-                  post.address,
-                  style: Theme.of(context).textTheme.caption.apply(
-                      fontFamily: UIData.ralewayFont, color: Colors.pink),
-                )
-              ],
-            ),
-          ))
-        ],
-      );
+class HomePage extends StatefulWidget {
+  const HomePage();
+  @override
+  _HomePageState createState() => new _HomePageState();
+}
 
-  //column last
-  Widget actionColumn(Post post) => FittedBox(
-        fit: BoxFit.contain,
-        child: ButtonBar(
-          alignment: MainAxisAlignment.center,
-          children: <Widget>[
-            LabelIcon(
-              label: "${post.likesCount} Likes",
-              icon: FontAwesomeIcons.solidThumbsUp,
-              iconColor: Colors.green,
-            ),
-            LabelIcon(
-              label: "${post.commentsCount} Comments",
-              icon: FontAwesomeIcons.comment,
-              iconColor: Colors.blue,
-            ),
-            Text(
-              post.postTime,
-              style: TextStyle(fontFamily: UIData.ralewayFont),
-            )
-          ],
-        ),
-      );
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+  static final GlobalKey<ScaffoldState> scaffoldKey =
+      new GlobalKey<ScaffoldState>();
 
-  //post cards
-  Widget postCard(BuildContext context, Post post) {
-    return Card(
-      elevation: 2.0,
-      child: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: profileColumn(context, post),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              post.message,
-              style: TextStyle(
-                  fontWeight: FontWeight.normal,
-                  fontFamily: UIData.ralewayFont),
-            ),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-          post.messageImage != null
-              ? Image.network(
-                  post.messageImage,
-                  fit: BoxFit.cover,
-                )
-              : Container(),
-          post.messageImage != null ? Container() : CommonDivider(),
-          actionColumn(post),
-        ],
-      ),
+  TabController _controller;
+  TextEditingController _searchQuery = new TextEditingController();
+  Icon actionIcon = new Icon(Icons.search, color: Colors.black,);
+  Widget appBarTitle = new Text("");
+
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = new TabController(
+      length: 3,
+      vsync: this,
     );
-  }
-
-  //allposts dropdown
-  Widget bottomBar() => PreferredSize(
-      preferredSize: Size(double.infinity, 50.0),
-      child: Container(
-          color: Colors.black,
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: 50.0,
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              color: Colors.white,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    "All Posts",
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.w700),
-                  ),
-                  Icon(Icons.arrow_drop_down)
-                ],
-              ),
-            ),
-          )));
-
-  Widget appBar() => SliverAppBar(
-        backgroundColor: Colors.black,
-        elevation: 2.0,
-        title: Text("Feed"),
-        forceElevated: true,
-        pinned: true,
-        floating: true,
-        bottom: bottomBar(),
-      );
-
-  Widget bodyList(List<Post> posts) => SliverList(
-        delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: postCard(context, posts[index]),
-          );
-        }, childCount: posts.length),
-      );
-
-  Widget bodySliverList() {
-    PostBloc postBloc = PostBloc();
-    return StreamBuilder<List<Post>>(
-        stream: postBloc.postItems,
-        builder: (context, snapshot) {
-          return snapshot.hasData
-              ? CustomScrollView(
-                  slivers: <Widget>[
-                    appBar(),
-                    bodyList(snapshot.data),
-                  ],
-                )
-              : Center(child: CircularProgressIndicator());
-        });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: CommonDrawer(),
-      body: bodySliverList(),
+    return new Scaffold(
+      key: scaffoldKey,
+        drawer: CommonDrawer(),
+      appBar: new AppBar(
+        leading: new IconButton(icon: new Icon(FontAwesomeIcons.ellipsisV, color: Colors.black.withOpacity(0.8),),
+            onPressed: () => scaffoldKey.currentState.openDrawer()),
+        backgroundColor: Colors.white,
+        bottom: new TabBar(
+          controller: _controller,
+          indicatorSize: TabBarIndicatorSize.tab,
+          labelColor: Colors.black.withOpacity(0.8),
+          tabs: const <Tab>[
+            const Tab(text: 'Populares'),
+            const Tab(text: 'Para ti'),
+            const Tab(text: 'Que hacer hoy'),
+          ],
+          indicatorColor: Colors.green,
+        ),
+         actions: <Widget>[
+          new IconButton(icon: actionIcon,onPressed:(){
+          setState(() {
+                     if ( this.actionIcon.icon == Icons.search){
+                      this.actionIcon = new Icon(Icons.close, color: Colors.black,);
+                      this.appBarTitle= TextField(
+                          controller: _searchQuery,
+                          decoration: new InputDecoration(
+                          prefixIcon: new Icon(Icons.search,color: Colors.black),
+                          hintText: "Search...",
+                          //hintStyle: new TextStyle(color: Colors.black)
+                        ),
+                      );}
+                      else {
+                        this.actionIcon = new Icon(Icons.search, color: Colors.black,);
+                         _searchQuery.clear();
+                      }
+
+
+                    });
+        } ,),
+        new IconButton(
+              icon: Icon(Icons.mail, color: Colors.black,),
+              onPressed: () {},
+            ),
+        
+        ]
+      ),
+    
+      body: new TabBarView(
+        controller: _controller,
+        children: <Widget>[
+          ImageCardList(),
+          ImageCardList(),
+          ImageCardList(),
+        ],
+      ),
+      bottomNavigationBar: new Material(
+        color: Colors.green,
+        child: new BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+       currentIndex: 0, 
+       items: [
+         BottomNavigationBarItem(
+           icon: new Icon(Icons.home),
+           title: new Text('Inicio'),
+         ),
+         BottomNavigationBarItem(
+           icon: new Icon(FontAwesomeIcons.bars),
+           title: new Text('Actividades'),
+         ),
+         BottomNavigationBarItem(
+           icon: Icon(FontAwesomeIcons.heart),
+           title: Text('Favoritos')
+         ),
+         BottomNavigationBarItem(
+           icon: Icon(FontAwesomeIcons.plusCircle),
+           title: Text('Crear')
+         )
+       ],
+     ),
+      ),
     );
   }
 }
