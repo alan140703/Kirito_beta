@@ -1,3 +1,4 @@
+import 'package:beta_balmer/utils/uidata.dart';
 import 'package:flutter/material.dart';
 import 'package:beta_balmer/pages/widgets/common_drawer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -35,8 +36,7 @@ class _HomePageState extends State<HomePage>
       key: scaffoldKey,
         drawer: CommonDrawer(),
       appBar: new AppBar(
-        leading: new IconButton(icon: new Icon(FontAwesomeIcons.ellipsisV, color: Colors.black.withOpacity(0.8),),
-            onPressed: () => scaffoldKey.currentState.openDrawer()),
+        leading: Image.asset(UIData.balmerLogo, scale: 0.3,),
         backgroundColor: Colors.white,
         bottom: new TabBar(
           controller: _controller,
@@ -74,6 +74,8 @@ class _HomePageState extends State<HomePage>
               icon: Icon(Icons.mail, color: Colors.black,),
               onPressed: () {},
             ),
+        new IconButton(icon: new Icon(FontAwesomeIcons.ellipsisV, color: Colors.black.withOpacity(0.8),),
+            onPressed: () => scaffoldKey.currentState.openDrawer()),
         
         ]
       ),

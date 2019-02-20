@@ -1,6 +1,7 @@
 import 'package:beta_balmer/pages/login_page.dart';
 import 'package:beta_balmer/pages/homePage.dart';
 import 'package:beta_balmer/pages/notfound_page.dart';
+import 'package:beta_balmer/pages/splashScreen.dart';
 import 'package:beta_balmer/utils/uidata.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.amber),
       debugShowCheckedModeBanner: false,
       showPerformanceOverlay: false,
-      home: LoginPage(),
+      home: SplashBalmerScreen(),
       supportedLocales: [
         const Locale("en", "US"),
         const Locale("hi", "IN"),

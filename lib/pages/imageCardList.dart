@@ -1,18 +1,13 @@
-//import 'package:beta_balmer/logic/product_bloc.dart';
-//import 'package:beta_balmer/model/product.dart';
 import 'package:flutter/material.dart';
 import 'package:beta_balmer/logic/activities_bloc.dart';
 import 'package:beta_balmer/model/activities.dart';
-//import 'package:flutter_uikit/logic/bloc/product_bloc.dart';
-//import 'package:flutter_uikit/model/product.dart';
-//import 'package:flutter_uikit/ui/widgets/common_scaffold.dart';
 
 class ImageCardList extends StatelessWidget {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   BuildContext _context;
 
   //stack1
-  Widget imageStack(String img, String title) => Stack(
+  Widget imageStack(String img, String title, String type) => Stack(
         children: <Widget>[
           Positioned.fill(
               child: Image.network(
@@ -20,72 +15,70 @@ class ImageCardList extends StatelessWidget {
             fit: BoxFit.cover,
           )),
           Positioned(
-            bottom: 55.0,
+            bottom: 90.0,
             child: FittedBox(
-              child: Text(
-                title,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white.withOpacity(0.9),
-                ),
-              ),
-            ),
+                fit: BoxFit.cover,
+                child: Text.rich(
+                  TextSpan(
+                    text: type, 
+                    style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                        fontSize: 12,
+                        color: Colors.white.withOpacity(0.9)),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: '\n$title',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Colors.white.withOpacity(0.9))),
+                    ],
+                  ),
+                )),
           ),
         ],
       );
-
-  /*Stack(
-    //alignment: const Alignment(0, 0),
-    children: [
-      Image.network(img, fit: BoxFit.fitWidth,),
-      Container(
-        alignment: Alignment(-1.0, 0.6),
-        decoration: BoxDecoration(
-          color: Colors.transparent,
-        ),
-        child: Text(
-          title,
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: Colors.grey,
-          ),
-        ),
-      ),
-    ],
-  );*/
-
   //stack2
   Widget descStack(Activities activity) => Positioned(
         bottom: 0.0,
         left: 0.0,
         right: 0.0,
         child: Container(
-          decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
+          decoration: BoxDecoration(color: Colors.white.withOpacity(0.8)),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
                 CircleAvatar(
                   backgroundImage: NetworkImage(activity.personImage),
                 ),
-                Text(activity.personName,
+                Text(activity.personName, textAlign: TextAlign.start,
                     style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 18.0,
+                      color: Colors.black,
+                      fontSize: 16.0,
                     )),
-                Text(activity.price,
+                ]),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                   Text(activity.price, textAlign: TextAlign.right,
                     style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 18.0,
+                      color: Colors.black,
+                      fontSize: 16.0,
                     )),
-                /*Text("Sesiones: ${activity.totalSesion}",
+                    Text('Sesiones: ${activity.totalSesion}', textAlign: TextAlign.right,
                     style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 18.0,
-                    )),*/
+                      color: Colors.black,
+                      fontSize: 12.0,
+                    )),
+                    
+                  ],
+                ),    
+                
               ],
             ),
           ),
@@ -137,7 +130,7 @@ class ImageCardList extends StatelessWidget {
                       child: Stack(
                         fit: StackFit.expand,
                         children: <Widget>[
-                          imageStack(act.image, act.title),
+                          imageStack(act.image, act.title, act.types),
                           descStack(act),
                           ratingStack(act.rating),
                         ],

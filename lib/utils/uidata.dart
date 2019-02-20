@@ -8,8 +8,6 @@ class UIData {
   static const String homeRoute = "/homePage";
   static const String loginRoute = "/login_page";
 
-  
-
   //strings
   static const String appName = "Balmer App";
 
@@ -20,11 +18,10 @@ class UIData {
   static const String quickNormalFont = "Quicksand_Book.otf";
   static const String quickLightFont = "Quicksand_Light.otf";
 
-
-  
   //images
   static const String imageDir = "assets/images";
   static const String balmerLogo = "$imageDir/LOGO-06.png";
+  static const String balmerLogo2 = "$imageDir/LOGO-04.png";
 
   //login
   static const String enter_code_label = "Phone Number";

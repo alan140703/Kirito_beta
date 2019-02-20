@@ -23,7 +23,7 @@ class ActivitiesViewModel {
             personImage: "https://cdn.pixabay.com/photo/2016/04/01/09/51/actor-1299629_960_720.png",
             personName: "Carlos Flores",
             image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDAIzsdhpslqjOA6mtB9Mon0uMPFw78BOROADlVq2aBjwvaQlXZw",
-            title: "Curso de Fotografia",
+            title: "Fotografia por Dummies",
             rating: 4.5,
             price: "\$ 1,200 MXN",
             types: "Curso",
