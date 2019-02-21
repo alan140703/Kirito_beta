@@ -107,8 +107,13 @@ class _HomePageState extends State<HomePage>
            title: Text('Favoritos')
          ),
          BottomNavigationBarItem(
-           icon: Icon(FontAwesomeIcons.plusCircle),
-           title: Text('Crear')
+           icon: new IconButton(
+             icon: Icon(FontAwesomeIcons.plusCircle),
+             onPressed: (){
+               Navigator.pushNamed(context, UIData.activityRoute1);
+             },
+           ),//Icon(FontAwesomeIcons.plusCircle),
+           title: Text('Crear'),
          )
        ],
      ),

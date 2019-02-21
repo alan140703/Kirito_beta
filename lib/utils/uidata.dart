@@ -7,6 +7,9 @@ class UIData {
   //routes
   static const String homeRoute = "/homePage";
   static const String loginRoute = "/login_page";
+  static const String activityRoute1 = "/activityPage1";
+  static const String activityRoute2 = "/activityPage2";
+  static const String activityRoute3 = "/activityPage3";
 
   //strings
   static const String appName = "Balmer App";
@@ -22,6 +25,7 @@ class UIData {
   static const String imageDir = "assets/images";
   static const String balmerLogo = "$imageDir/LOGO-06.png";
   static const String balmerLogo2 = "$imageDir/LOGO-04.png";
+  static const String balmerLogoInit = "$imageDir/LOGO-01.png";
 
   //login
   static const String enter_code_label = "Phone Number";
