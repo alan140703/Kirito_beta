@@ -1,6 +1,6 @@
 import 'package:beta_balmer/utils/uidata.dart';
 import 'package:flutter/material.dart';
-import'package:flutter_verification_code_input/flutter_verification_code_input.dart';
+import 'package:flutter_verification_code_input/flutter_verification_code_input.dart';
 
 class Page3Act extends StatefulWidget {
   @override
@@ -24,6 +24,7 @@ class _Page3ActState extends State<Page3Act> {
             ),
             onPressed: () {
               print('Clicked');
+              Navigator.pushNamed(context, UIData.activityRoute4);
             }),
       );
 
@@ -37,19 +38,27 @@ class _Page3ActState extends State<Page3Act> {
                 "Indica el número máximo de participantes ",
                 style: TextStyle(
                     color: Colors.black,
-                    fontSize: 40,
+                    fontSize: 30,
                     fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 100.0),
-              Center(
-                child: VerificationCodeInput(
-                length: 2,
-                keyboardType: TextInputType.number,
-                 onCompleted: (String value) {
-              print(value);
-            },
-              ),
+              SizedBox(height: 20.0),
+              Container(
+                padding: EdgeInsets.all(16.0),
+                decoration: BoxDecoration(
+                  border: Border(
+                     top: BorderSide(width: 1.0, color: Colors.grey),
+                  ),
+                ),
+                child: Center(
+                  child: VerificationCodeInput(
+                    length: 2,
+                    keyboardType: TextInputType.number,
+                    onCompleted: (String value) {
+                      print(value);
+                    },
+                  ),
+                ),
               ),
               SizedBox(height: 80.0),
               continueButton(),

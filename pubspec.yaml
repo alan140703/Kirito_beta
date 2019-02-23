@@ -23,6 +23,9 @@ dependencies:
   font_awesome_flutter: ^8.4.0
   cached_network_image: ^0.5.1
   splashscreen: ^1.2.0
+  flutter_time_picker_spinner: ^1.0.3
+  intl: ^0.15.7
+  flutter_calendar_carousel: ^1.3.12
   flutter_verification_code_input:
       git:
         url: git://github.com/tinylife-io/flutter_verification_code_input.git
