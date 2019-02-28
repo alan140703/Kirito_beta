@@ -14,7 +14,7 @@ with SingleTickerProviderStateMixin{
   void initState() {
     super.initState();
     _controller = new TabController(
-      length: 3,
+      length: 2,
       vsync: this,
     );
   }

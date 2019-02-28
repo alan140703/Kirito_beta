@@ -7,6 +7,8 @@ import 'package:beta_balmer/pages/createActivity/page2.dart';
 import 'package:beta_balmer/pages/createActivity/page3.dart';
 import 'package:beta_balmer/pages/createActivity/page4.dart';
 import 'package:beta_balmer/pages/createActivity/page5.dart';
+import 'package:beta_balmer/pages/createActivity/page6.dart';
+import 'package:beta_balmer/pages/createActivity/page7.dart';
 import 'package:beta_balmer/utils/uidata.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -39,6 +41,8 @@ class MyApp extends StatelessWidget {
         UIData.activityRoute3: (BuildContext context) => Page3Act(),
         UIData.activityRoute4: (BuildContext context) => Pag4Act(),
         UIData.activityRoute5: (BuildContext context) => Page5Act(),
+        UIData.activityRoute6: (BuildContext context) => Page6Act(),
+        UIData.activityRoute7: (BuildContext context) => Page7Act(),
         
 
       

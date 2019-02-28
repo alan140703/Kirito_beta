@@ -1,3 +1,4 @@
+import 'package:beta_balmer/utils/uidata.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/classes/event_list.dart';
@@ -66,24 +67,33 @@ class _CalendarSelectState extends State<CalendarSelect> {
             margin: EdgeInsets.symmetric(horizontal: 16.0),
             child: _calendarCarousel,
           ),
-          Container(
-            decoration: new BoxDecoration(
-              gradient: LinearGradient(
-                colors: [const Color(0xFF00827D), Colors.yellow],
-                begin: Alignment.bottomLeft,
-                end: Alignment.topRight,
-              ),
-            ),
-            child: new FlatButton(
-                child: new Text(
-                  'Continuar',
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("Selecciona los respectivos dias para tu actividad"),
+                SizedBox(height: 16.0,),
+                Container(
+                  decoration: new BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [const Color(0xFF00827D), Colors.yellow],
+                      begin: Alignment.bottomLeft,
+                      end: Alignment.topRight,
+                    ),
+                  ),
+                  child: new FlatButton(
+                      child: new Text(
+                        'Continuar',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                      onPressed: () {
+                        print('NUMERO DE SESIONES: ${datesGrowable.length}');
+                        Navigator.pushNamed(context, UIData.activityRoute6);
+                      }),
                 ),
-                onPressed: () {
-                  print('NUMERO DE SESIONES: ${datesGrowable.length}');
-                  //Navigator.pushNamed(context, UIData.activityRoute4);
-                }),
+              ],
+            ),
           )
         ],
       ),
