@@ -14,6 +14,8 @@ class UIData {
   static const String activityRoute5 = "/activityPage5";
   static const String activityRoute6 = "/activityPage6";
   static const String activityRoute7 = "/activityPage7";
+
+  static const String activity1 ="/activity1";
   //strings
   static const String appName = "Balmer App";
 
