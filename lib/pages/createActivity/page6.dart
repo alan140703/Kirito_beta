@@ -43,7 +43,7 @@ class _Page6ActState extends State<Page6Act> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             new Text(
-              "Tipo de Evento",
+              "Tipo de Espacio",
               style: new TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             new Row(

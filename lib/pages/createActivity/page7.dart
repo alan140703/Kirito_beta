@@ -1,3 +1,4 @@
+import 'package:beta_balmer/pages/createActivity/Page8.dart';
 import 'package:flutter/material.dart';
 
 class Page7Act extends StatefulWidget {
@@ -106,7 +107,7 @@ class _Page7ActState extends State<Page7Act>
             new Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text("Utiliza esta cantidad en todas las opciones"),
+                Text("Utiliza esta cantidad \nen todas las opciones"),
                 Switch(
                   value: _value1,
                   onChanged: _onChanged1,
@@ -132,7 +133,11 @@ class _Page7ActState extends State<Page7Act>
                   TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
             onPressed: () {
-              // Navigator.pushNamed(context, UIData.activityRoute7);
+               Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context)=> Page8Act(),
+                    )
+                  );
             }),
       );
 
