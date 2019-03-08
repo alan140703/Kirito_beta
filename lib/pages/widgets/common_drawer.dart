@@ -23,6 +23,8 @@ class CommonDrawer extends StatelessWidget {
               backgroundImage: new AssetImage(UIData.balmerLogo),
             ),
           ),
+          
+          //hacer esto un bonton
           new ListTile (
             title: Text(
               "Imformaciòn de usuario",
@@ -33,6 +35,8 @@ class CommonDrawer extends StatelessWidget {
               color:  Colors.black,
             ),
           ),
+          
+           //hacer esto un bonton
           new ListTile(
             title: Text(
               "Apreciacion",
@@ -43,6 +47,8 @@ class CommonDrawer extends StatelessWidget {
               color: Colors.black,
             ),
           ),
+          
+           //hacer esto un bonton
           new ListTile(
             title: Text(
               "Estadìsticas / Pagos",
@@ -53,6 +59,8 @@ class CommonDrawer extends StatelessWidget {
               color: Colors.black,
             ),
           ),
+          
+           //hacer esto un bonton
           new ListTile(
             title: Text(
               "Configuraciòn",
@@ -64,6 +72,8 @@ class CommonDrawer extends StatelessWidget {
             ),
           ),
           Divider(),
+          
+           //hacer esto un bonton
           new ListTile(
             title: Text(
               "Ayuda",
