@@ -1,73 +1,77 @@
 import 'package:flutter/material.dart';
 import 'package:beta_balmer/utils/uidata.dart';
 
+
 class CommonDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
+
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
             accountName: Text(
-              "Pawan Kumar",
+              "¿Donde te encuentras?",
+              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 22.0),
             ),
             accountEmail: Text(
-              "mtechviral@gmail.com",
+              "Guadalajara, Mèxico",
             ),
+
             currentAccountPicture: new CircleAvatar(
               backgroundImage: new AssetImage(UIData.balmerLogo),
             ),
           ),
-          new ListTile(
+          new ListTile (
             title: Text(
-              "Profile",
+              "Imformaciòn de usuario",
               style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.0),
             ),
             leading: Icon(
-              Icons.person,
-              color: Colors.blue,
+              Icons.contact_mail,
+              color:  Colors.black,
             ),
           ),
           new ListTile(
             title: Text(
-              "Shopping",
+              "Apreciacion",
               style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.0),
             ),
             leading: Icon(
-              Icons.shopping_cart,
-              color: Colors.green,
+              Icons.star_border,
+              color: Colors.black,
             ),
           ),
           new ListTile(
             title: Text(
-              "Dashboard",
+              "Estadìsticas / Pagos",
               style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.0),
             ),
             leading: Icon(
-              Icons.dashboard,
-              color: Colors.red,
+              Icons.credit_card,
+              color: Colors.black,
             ),
           ),
           new ListTile(
             title: Text(
-              "Timeline",
+              "Configuraciòn",
               style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.0),
             ),
             leading: Icon(
-              Icons.timeline,
-              color: Colors.cyan,
+              Icons.settings,
+              color: Colors.black,
             ),
           ),
           Divider(),
           new ListTile(
             title: Text(
-              "Settings",
+              "Ayuda",
               style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.0),
             ),
             leading: Icon(
-              Icons.settings,
-              color: Colors.brown,
+              Icons.help_outline,
+              color: Colors.black,
             ),
           ),
           Divider(),
